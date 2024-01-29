@@ -1,0 +1,7 @@
+include navBar.pug     
+  script.   
+       const modal1=("#{modal}"!=="false")
+       if(modal1){
+       const miModal = new bootstrap.Modal(document.getElementById('miModal'));
+         miModal.show();
+         }    

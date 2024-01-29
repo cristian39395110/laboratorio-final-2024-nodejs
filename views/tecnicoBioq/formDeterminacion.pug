@@ -1,0 +1,31 @@
+include navBar.pug
+if modal
+    include ../modal.pug
+.container 
+  .row 
+    .div.col 
+      h1 Determinación 
+  .row  
+    .col.mt-4
+      form(method="POST", action=`/vistaTecBioq/addet`, name="formDeterminacion", novalidate)
+        .col-lg-4.col-md-6.col-sm-12
+          label(for="determinacion", class="form-label") Determinación:
+          input#determinacion.form-control(type="text", name="nombre")
+        .col-lg-4.col-md-6.col-sm-12
+          label(for="unidadMedida") Unidad de Medida:
+          input.form-control(type="text", name="unidadMedida", id="unidadMedida")
+        .col-lg-4.col-md-6.col-sm-12
+          label(for="valorMin") Valor Mínimo:
+          input.form-control(type="number", name="valorMin", id="valorMin", step="0.1")
+        .col-lg-4.col-md-6.col-sm-12
+          label(for="valorMax") Valor Máximo:
+          input.form-control(type="number", name="valorMax", id="valorMax", step="0.1")
+        .col-lg-4.col-md-6.col-sm-12
+          button.btn.btn-primary(type="submit") Enviar 
+    script.   
+         const modal1=("#{modal}"!=="false")
+         if(modal1){
+         const miModal = new bootstrap.Modal(document.getElementById('miModal'));
+           miModal.show();
+           }
+                     

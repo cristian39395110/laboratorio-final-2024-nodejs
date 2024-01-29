@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Administrador Lab - G3
+    link(rel='stylesheet', href='/stylesheets/admin2.css')
+   
+  body
+    nav.navbar.navbar-expand-lg
+      a.navbar-brand(href='#') 
+      img.imagen-centrada(src='/img/nombreLab.png', alt='Titulo')
+      .navbar-right
+        span
+          b Empleado:
+          span#usuario-activo #{nombreUsuario}   
+        form(action="/salir" )
+         button#cerrar-sesion.btn.btn-link Cerrar Sesión
+    .container
+      .row
+        aside.sidebar
+          ul.nav.flex-column
+            li.nav-item
+              a.nav-link(href='/vistaAdmin/inicio/personas') Gestión de Pacientes
+            li.nav-item
+              a.nav-link(href='/orden') Gestión de Órdenes
+            li.nav-item
+              a.nav-link(href='/vistaGestionUsers/inicio') Gestión de Usuarios
+            if soyBioquimico  
+              li.nav-item
+                a.nav-link(href='/vistaTecBioq/inicio') Ingresar como bioquímico 
+        .main-content
+          div#contenido
+           img(src='/img/hola.gif', alt='Titulo', style='width: 200px; height: auto; border-radius: 50%;')
+
+           h1 Bienvenido al sistema de gestión para nuestro laboratorio
+
+           p
+          | Este es el sistema de gestión del Laboratorio G3, diseñado para ayudarte a administrar y gestionar de manera eficiente todas las actividades y procesos relacionados con el laboratorio. Esperamos que esta herramienta te sea de gran utilidad. Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarte con alguno de los programadores.
+            
+    footer.footer
+      | &copy; 2023 Laboratorio G3
+  script(src='/javascripts/inicioAdmin2.js')

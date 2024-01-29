@@ -1,0 +1,43 @@
+include navBar.pug
+.container 
+  table#example.display(style="width:100%")
+    thead
+      tr
+        th Nombre
+        th Tipo de muestra
+        th Tipo de examen
+        th Determinaciones
+        th Editar
+    if examenes
+      tbody
+        each examen in examenes
+          - let str=""
+          - if(examen.Determinacions)
+            - for(let i=0;i<examen.Determinacions.length;i++)
+              - str= `${str}${str!==""?", ":""} ${examen.Determinacions[i].nombre}`
+          tr
+            td= examen.nombre
+            if examen.TipoMuestra 
+              td= examen.TipoMuestra.nombre 
+            else 
+              td -    
+            if examen.TipoExamen 
+              td= examen.TipoExamen.nombre 
+            else
+              td - 
+            td= str
+            td 
+              form(action=`/vistaTecBioq/edit` method="post")
+                    input(type="hidden" name="examen" value=JSON.stringify(examen))
+                    input(type="submit" value="Editar" class="btn btn-primary")
+    tfoot
+      tr
+        th Nombre
+        th Tipo de muestra
+        th Tipo de examen
+        th Editar
+
+script(src="https://code.jquery.com/jquery-3.7.0.js") 
+script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")         
+script. 
+  new DataTable('#example'); 

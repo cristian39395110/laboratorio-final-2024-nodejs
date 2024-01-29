@@ -1,0 +1,48 @@
+include navBar.pug
+.container 
+  table#example.display(style="width:100%")
+    thead
+      tr
+        th Determinacion
+        th Edad mínima
+        th Edad máxima
+        th Sexo 
+        th Embarazo 
+        th Valor mínimo 
+        th Valor máximo
+        th    
+    if arrRef
+      tbody
+        each ref in arrRef
+          tr
+            td= ref.Determinacion.nombre
+            td= ref.edadMin
+            td= ref.edadMax
+            td= ref.sexo
+            td= ref.embarazo
+            td= ref.valorMinimo 
+            td= ref.valorMaximo
+            td 
+              if ref.deletedAt
+                form(action=`/vistaTecBioq/activarRef` method="post")
+                      input(type="hidden" name="id" value=ref.id)
+                      input(type="submit" value="Activar" class="btn btn-primary")
+              else 
+                form(action=`/vistaTecBioq/desactivarRef` method="post")
+                      input(type="hidden" name="id" value=ref.id)
+                      input(type="submit" value="Desactivar" class="btn btn-primary")
+    tfoot
+      tr
+        th Determinacion
+        th Edad mínima
+        th Edad máxima
+        th Sexo 
+        th Embarazo 
+        th Valor mínimo 
+        th Valor máximo
+        th 
+
+script(src="https://code.jquery.com/jquery-3.7.0.js") 
+script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")         
+script. 
+  new DataTable('#example');
